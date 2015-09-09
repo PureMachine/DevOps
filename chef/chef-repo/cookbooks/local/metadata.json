@@ -1,0 +1,32 @@
+{
+  "name": "local",
+  "description": "Configures local workstation",
+  "long_description": "Configures local workstation for use as chef workstation",
+  "maintainer": "PureMachine",
+  "maintainer_email": "nodelivery@black.void",
+  "license": "apache2",
+  "platforms": {
+  },
+  "dependencies": {
+    "winbox": "~> 0.1.50"
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+  },
+  "version": "0.1.0",
+  "source_url": "",
+  "issues_url": ""
+}
