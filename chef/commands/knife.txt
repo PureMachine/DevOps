@@ -1,0 +1,1 @@
+D:\devops\chef\chef-repo [master ≡ +0 ~1 -0 !]> knife bootstrap windows winrm uvo13hos3i1j7lrjc38.vm.cld.sr --winrm-user administrator --winrm-password 'Sz9kg50dR9' --node-name 'target1'
