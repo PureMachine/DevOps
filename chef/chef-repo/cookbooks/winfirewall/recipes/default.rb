@@ -35,5 +35,5 @@ powershell_script 'Open Ports' do
       }
   EOH
   guard_interpreter :powershell_script
-  not_if "(Get-NetFirewallPortFilter | Where-Object {$_.LocalPort -like "'80-86'"})"
+  not_if "(Get-NetFirewallPortFilter | Where-Object {$_.LocalPort -like '*80-86*'})"
 end
