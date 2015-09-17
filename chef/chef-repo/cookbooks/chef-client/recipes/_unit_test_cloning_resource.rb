@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: chef-client
-# Recipe:: default
+# Recipe:: _unit_test_cloning_resource
 #
 # Copyright 2010, Chef Software, Inc.
 #
@@ -17,4 +17,15 @@
 # limitations under the License.
 #
 
-include_recipe 'chef-client::service'
+# include helper methods
+class ::Chef::Recipe
+  include ::Opscode::ChefClient::Helpers
+end
+
+directory node['chef_client']['conf_dir'] do
+  recursive false
+  owner 'fake'
+  group 'fake'
+end
+
+create_directories

@@ -1,8 +1,9 @@
 #
-# Cookbook Name:: chef-client
-# Recipe:: default
+# Author:: Joshua Timberman <joshua@chef.io>
+# Cookbook Name:: chef
+# Recipe:: delete_validation
 #
-# Copyright 2010, Chef Software, Inc.
+# Copyright 2010, Chef Software, Inc
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,6 +16,15 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-include_recipe 'chef-client::service'
+class ::Chef::Recipe
+  include ::Opscode::ChefClient::Helpers
+end
+
+unless Chef::Config[:validation_key].nil?
+  file Chef::Config[:validation_key] do
+    action :delete
+    backup false
+    only_if { ::File.exists?(Chef::Config[:client_key]) }
+  end
+end

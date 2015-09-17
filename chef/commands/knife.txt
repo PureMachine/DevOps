@@ -1,1 +1,10 @@
-D:\devops\chef\chef-repo [master ≡ +0 ~1 -0 !]> knife bootstrap windows winrm uvo13hos3i1j7lrjc38.vm.cld.sr --winrm-user administrator --winrm-password 'Sz9kg50dR9' --node-name 'target1'
+knife bootstrap windows winrm uvo1h2kymu0mig44xpb.vm.cld.sr --winrm-user administrator --winrm-password 'Tm4tHQY5nr' --node-name 'target2' --bootstrap-install-command "ADDLOCAL="ChefClientFeature,ChefServiceFeature"
+
+msiexec /qn /i C:\inst\chef-client-11.8.0-1.windows.msi ADDLOCAL="ChefClientFeature,ChefServiceFeature"knife bootstrap windows winrm hostname_or_ip -r 'recipe[chef-client::service]' -x Administrator -P 'super_secret_password'
+
+knife bootstrap windows winrm 172.16.0.148 -r 'recipe[chef-client::service]' -x Administrator -P '!Q@W#E4r5t6y' --node-name 'target1'
+
+Winrm quickconfig -q
+Winrm set winrm/config/client/auth @{Basic="true"}
+Winrm set winrm/config/service/auth @{Basic="true"}
+Winrm set winrm/config/service @{AllowUnencrypted="true"}

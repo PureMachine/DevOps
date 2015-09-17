@@ -16,8 +16,10 @@ end
 
 powershell_script 'MSDTCconfig' do
   code <<-EOH
-  Set-DtcNetworkSetting –DtcName Local –AuthenticationLevel NoAuth –InboundTransactionsEnabled 1 –OutboundTransactionsEnabled 1 –RemoteClientAccessEnabled 1 –confirm:$false
+  Set-DtcNetworkSetting -DtcName Local -AuthenticationLevel NoAuth -InboundTransactionsEnabled 1 -OutboundTransactionsEnabled 1 -RemoteClientAccessEnabled 1 -confirm:$false
   EOH
+  guard_interpreter :powershell_script
+  not_if "(get-DtcNetworkSetting -DtcName 'Local') -eq '*NoAuth*'"
 end
 
 service 'MSDTC' do
