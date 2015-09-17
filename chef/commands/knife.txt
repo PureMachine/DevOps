@@ -8,3 +8,5 @@ Winrm quickconfig -q
 Winrm set winrm/config/client/auth @{Basic="true"}
 Winrm set winrm/config/service/auth @{Basic="true"}
 Winrm set winrm/config/service @{AllowUnencrypted="true"}
+
+knife winrm 172.16.0.148 chef-client --manual-list --winrm-user administrator --winrm-password '!Q@W#E4r5t6y'

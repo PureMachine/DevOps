@@ -24,4 +24,6 @@ end
 
 service 'MSDTC' do
   action [:restart]
+  guard_interpreter :powershell_script
+  not_if "(get-DtcNetworkSetting -DtcName 'Local' | Where-Object {$_.AuthenticationLevel -eq 'NoAuth'})"
 end
