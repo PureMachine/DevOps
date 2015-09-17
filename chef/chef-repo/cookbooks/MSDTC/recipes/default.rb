@@ -18,12 +18,10 @@ powershell_script 'MSDTCconfig' do
   code <<-EOH
   Set-DtcNetworkSetting -DtcName Local -AuthenticationLevel NoAuth -InboundTransactionsEnabled 1 -OutboundTransactionsEnabled 1 -RemoteClientAccessEnabled 1 -confirm:$false
   EOH
-  guard_interpreter :powershell_script
-  not_if "(get-DtcNetworkSetting -DtcName 'Local' | Where-Object {$_.AuthenticationLevel -eq 'NoAuth'})"
+  #guard_interpreter :powershell_script
+  #not_if "(get-DtcNetworkSetting -DtcName 'Local' | Where-Object {$_.LocalPort -like "'80-86'"}) -eq '*NoAuth*'"
 end
 
 service 'MSDTC' do
   action [:restart]
-  guard_interpreter :powershell_script
-  not_if "(get-DtcNetworkSetting -DtcName 'Local' | Where-Object {$_.AuthenticationLevel -eq 'NoAuth'})"
 end
